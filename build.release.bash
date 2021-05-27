@@ -15,10 +15,13 @@ function prepare() {
 
 function build() {
     chmod +x gradlew
+	chmod +x createlocalserver.sh
+	./createlocalserver.sh
     ./gradlew build
 }
 
 function install() {
+	rm -rfv "$DEST/modules/"SaltedAuth-*.jar
 	cp -rfv "$BUILDDIR/"SaltedAuth-*.jar "$DEST/modules"
 	cp -rfv .credtool.target "/etc/connective-http/"
 }
